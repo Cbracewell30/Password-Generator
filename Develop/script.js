@@ -2,82 +2,77 @@
 var generateBtn = document.querySelector("#generate");
 var characterLowercase = "abcdefghijklmnopqrstuvwxyz";
 var characterUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var specialCharacters = "!@#$%^&*()+=*?<>,."
-var numericCharacters = "123456789"
-var characterLength = 0123456789;
+var specialCharacters = "!@#$%^&*()+=*?<>,.";
+var numericCharacters = "123456789";
+
+
 
 // welcoming window alert with criteria
-window.alert('Welcome to the password generator! Passwords must include at least one set or characters and must be between 8-128 characters.');
+window.alert("Welcome to Chris' password generator!");
 
 
-// lower case window prompt
-function lowerftn () {
-  var lowerCasePrompt = window.prompt('Characters: Would you like include lowercase lettering? Answer: Yes or No');
-  if (lowerCasePrompt === "Yes" || lowerCasePrompt === "No" ){
-    specialftn();
-  }
-  else {
+
+
+
+
+
+
+
+// character lengthftn function
+function lengthftn() {
+  var characterLengthPrompt = parseInt(window.prompt('How many charcters would you like your password to be? Must be between 8-128 characters'))
+  if (Number.isNaN(characterLengthPrompt)) {
     window.alert("Please enter a valid choice");
-    return lowerftn();
+    return "Please enter a valid choice"
   }
-};
+  if (characterLengthPrompt < 8) {
+    alert('Please enter a valid choice. Password lengthftn has to bee at lease 8 characters');
+    return 'Please enter a valid choice. Password lengthftn has to bee at lease 8 characters'
+  }
+  if (characterLengthPrompt > 128) {
+    alert('Please enter a valid choice. Password lengthftn has to bee at lease 128 characters');
+    return 'Please enter a valid choice. Password lengthftn has to bee at lease 128 characters'
+  }
+  var upperCaseConfirm = window.confirm('Characters: Would you like to include UPPERCASE lettering?');
+  var userResponse = ""
+  if (upperCaseConfirm) {
+   userResponse += characterUpperCase
+  }
+  // lower case window confirm
+  var lowerCaseComfirm = window.confirm('Characters: Would you like include lowercase lettering?');
 
-// special character prompt
-function specialftn (){
-  var specialCharacterPrompt = window.prompt('Characters: Would you like to include special characters? Answer: Yes or No');
-  if (specialCharacterPrompt === "Yes" || specialCharacterPrompt === "No") {
-    lenghtftn ();
+  if (lowerCaseComfirm) {
+  userResponse += characterLowercase
   }
-  else {
-    window.alert("Please enter a valid choice");
-    return specialftn ();
+  // special character confirm
+  var specialCharacterConfirm = window.confirm('Characters: Would you like to include special characters?');
+  if (specialCharacterConfirm) {
+    userResponse += specialCharacters
   }
-};
+  //numeric prompt function
+  var numericCharactersConfirm = window.confirm('Would you like to include numerc vales?');
+  if (numericCharactersConfirm) {
+    userResponse += numericCharacters
+  };
 
-// character length function
-function lenghtftn(){
-  var characterLengthPrompt = window.prompt('How many charcters would you like your password to be? Answer: 8-129 characters');
-  if (characterLengthPrompt <= 128 || characterLengthPrompt >= 8){
-  }
-  else {
-    window.alert("Please enter a valid choice");
-    return lenghtftn();
-  }
-};
+  
 
-//numeric prompt function
-function numericftn (){
-  var numericCharactersPrompt = window.prompt("Would you like to include numerc vales? Answer: Yes or No");
-if(numericCharactersPrompt == "Yes" || numericCharacters === "No") {
-
-}
-else {
-  window.alert("Please enter a valid choice");
-    return numericftn();
-}
-};
 
 
 // Write password to the #password input
 function writePassword() {
-  var upperCasePrompt = window.prompt('Characters: Would you like to include UPPERCASE lettering? Answer: Yes or No');
- // var password = generatePassword();
-  //var passwordText = document.querySelector("#password");
 
- // passwordText.value = password;
-if (upperCasePrompt === "Yes" || upperCasePrompt === "No") {
-  lowerftn();
-}
-else {
-    window.alert("Please enter a valid choice");
-    return writePassword();
-}
- };
+
+  var password = lengthftn();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+};
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
- 
-// //for(var i = 0; i <= characterLength; i++) {
-//  // var random = math.floor(math.random() *c)
-// //}
+
+// // //for(var i = 0; i <= characterLength; i++) {
+// //  // var random = math.floor(math.random() *c)
+// // //}
