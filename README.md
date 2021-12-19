@@ -22,7 +22,8 @@ THEN the password is either displayed in an alert or written to the page.
 
 
 
-Deployment: [ Deployment] (https://cbracewell30.github.io/Password-Generator/)
+Deployment:
+[ Deployment] (https://cbracewell30.github.io/Password-Generator/)
 
 Screenshot:
 ![image](https://user-images.githubusercontent.com/93891189/146658963-2cf99f8e-5b88-4210-9e08-7962a0e7835e.png)
